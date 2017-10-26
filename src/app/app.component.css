@@ -1,0 +1,11 @@
+.intelHeader {
+    background-color: #fff;
+    color: #000;
+}
+
+.logo {
+  padding: 5px 0px 5px 10px;
+  width: 55px;
+  height: 55px;
+  display: block;
+}
