@@ -1,4 +1,4 @@
 <ul style="padding: 10px 10px 10px 10px" class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" (click)="activate($event)" *ngFor="let c of characters">{{c.name}}</a>
+  <a href="#" class="list-group-item list-group-item-action" (click)="activate($event, c)" *ngFor="let c of characters">{{c.name}}</a>
   <p *ngIf="!apps || !apps.length" >No apps to show</p>
 </ul>

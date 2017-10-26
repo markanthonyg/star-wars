@@ -14,27 +14,30 @@ export class AppListComponent implements OnInit {
   characters: any[];
   lastClicked: any;
 
+  currentCharacter:any;
+
   constructor(private swapiService: SwapiService) { }
 
   ngOnInit() {
     this.swapiService.getCharacters().subscribe(characters => {
       this.characters = characters;
-    })
+    });
   }
 
-  activate(c) {
-
-    if (this.lastClicked && this.lastClicked != c.target) {
+  activate(e, c) {
+    if (this.lastClicked && this.lastClicked != e.target) {
       $(this.lastClicked).removeClass('active');
-      $(c.target).addClass('active');
-      this.lastClicked = c.target;
+      $(e.target).addClass('active');
+      this.lastClicked = e.target;
     }
     else {
-      $(c.target).addClass('active');
-      this.lastClicked = c.target;
+      $(e.target).addClass('active');
+      this.lastClicked = e.target;
     }
-    // for (var v in c.target)
-    //   console.log(v);
+
+    // update app-viewer component somehow?!?!?!?
+    this.currentCharacter = c;
+    this.swapiService.setCurrentCharacter(this.currentCharacter);
   }
 
 }
