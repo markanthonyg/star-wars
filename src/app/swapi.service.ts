@@ -11,7 +11,8 @@ export class SwapiService {
 
   private messageSource = new BehaviorSubject<string>("default msg");
   currentMessage = this.messageSource.asObservable();
-  private selectedCharacter = new BehaviorSubject<any>({});
+
+  private selectedCharacter = new BehaviorSubject<any>(null);
   currentCharacter = this.selectedCharacter.asObservable();
 
   private homeworld = new BehaviorSubject<any>({});
@@ -28,6 +29,7 @@ export class SwapiService {
 
   setCurrentCharacter(character: any) {
     this.selectedCharacter.next(character);
+    this.getHomeworld(character.homeworld).subscribe(world => this.homeworld.next(world));
   }
 
   changeMessage(message: string) {

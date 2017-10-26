@@ -1,22 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { SwapiService } from '../swapi.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-app-viewer',
   templateUrl: './app-viewer.component.html',
   styleUrls: ['./app-viewer.component.css']
 })
-export class AppViewerComponent implements OnInit {
+export class AppViewerComponent implements OnInit, DoCheck {
 
-  selectedCharacter: any;
-  homeworld: string;
+  selectedCharacter: any = null;
+  homeworld: string = '';
+  showJumbo = false;
 
   constructor(private swapiService: SwapiService) { }
 
   ngOnInit() {
-    this.swapiService.currentCharacter.subscribe(character => this.selectedCharacter = character);
+    this.swapiService.currentCharacter.subscribe(character =>{
+      this.selectedCharacter = character;
+    });
+
     this.swapiService.currentHomeworld.subscribe(homeworld => this.homeworld = homeworld);
-    this.swapiService.getHomeworld(this.selectedCharacter.homeworld).subscribe(world => this.homeworld = world);
+  }
+
+  ngDoCheck(){
+   if (this.selectedCharacter){
+          this.showJumbo = true;
+      } else {
+          this.showJumbo = false;
+      }
   }
 
 }

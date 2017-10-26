@@ -1,9 +1,10 @@
-<div style="padding: 10px 10px 10px 10px" class="jumbotron jumbotron-fluid">
+<div  *ngIf="selectedCharacter" style="padding: 10px 10px 10px 10px" class="jumbotron jumbotron-fluid">
   <h1 class="display-3">{{selectedCharacter.name}}</h1>
+  <!-- *ngIf="homeworld && homeworld.length" -->
   <p class="lead">of {{homeworld}}</p>
   <hr class="my-4">
-  <p>For singles...</p>
+  <p>{{selectedCharacter.birth_year}}</p>
   <p class="lead">
-    <a class="btn btn-danger btn-lg" href="#" role="button">Tinder</a>
+    <a class="btn btn-info btn-lg" href="#" role="button">Add</a>
   </p>
 </div>

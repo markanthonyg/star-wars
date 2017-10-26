@@ -9,3 +9,25 @@
   height: 55px;
   display: block;
 }
+
+#bg {
+  /* The image used */
+  /*background-image: url("https://cdna.artstation.com/p/assets/images/images/002/448/368/large/benoit-duroi-tatooine-reboot-0029-cam-004.jpg?1461853926");*/
+  background-image: url('');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#title {
+  font-size: 100px;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0.5;
+  font-family: verdana;
+  margin-bottom: 0;
+}
