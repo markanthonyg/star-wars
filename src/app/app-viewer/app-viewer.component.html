@@ -1,6 +1,5 @@
 <div [ngStyle]="{opacity: opacity}" *ngIf="selectedCharacter" style="padding: 10px 10px 10px 10px" class="jumbotron jumbotron-fluid">
   <h1 class="display-3">{{selectedCharacter.name}}</h1>
-  <!-- *ngIf="homeworld && homeworld.length" -->
   <p *ngIf="homeworld" class="lead">of {{homeworld}}</p>
   <hr class="my-4">
   <div class="row">

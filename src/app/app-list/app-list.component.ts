@@ -26,16 +26,6 @@ export class AppListComponent implements OnInit {
 
   activate(e, c) {
     this.opacity = 0.5;
-    // if (this.lastClicked && this.lastClicked != e.target) {
-    //   $(this.lastClicked).removeClass('active');
-    //   $(e.target).addClass('active');
-    //   this.lastClicked = e.target;
-    // }
-    // else {
-    //   $(e.target).addClass('active');
-    //   this.lastClicked = e.target;
-    // }
-
     // update app-viewer component
     this.currentCharacter = c;
     this.swapiService.setCurrentCharacter(this.currentCharacter);

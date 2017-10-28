@@ -17,6 +17,8 @@ export class AppComponent {
     Stewjon: "../assets/images/stewjon.jpg"
   };
 
+  backLoads = true;
+
   constructor(private data: SwapiService) {}
 
   ngOnInit() {
@@ -30,13 +32,22 @@ export class AppComponent {
   }
 
   updateWorldBg(world) {
-    $('#back').attr('src', this.worlds[world]);
-    $('#back').on('load', function() {
-      $('#front').toggleClass('transparent');
-      $('#back').toggleClass('transparent');
-      $('#back').attr('id', 'front');
-      $('#front').attr('id', 'back');
-
-    });
+    if (this.backLoads) {
+      $('#back').attr('src', this.worlds[world]);
+      $('#back').on('load', function() {
+        $('#front').toggleClass('transparent');
+        $('#back').toggleClass('transparent');
+        $('#back').off('load');
+      });
+      this.backLoads = false;
+    } else {
+      $('#front').attr('src', this.worlds[world]);
+      $('#front').on('load', function() {
+        $('#back').toggleClass('transparent');
+        $('#front').toggleClass('transparent');
+        $('#front').off('load');
+      });
+      this.backLoads = true;
+    }
   }
 }
