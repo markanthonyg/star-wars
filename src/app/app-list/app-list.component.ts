@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../swapi.service';
-//import * as $ from 'jquery';
 declare const $:any;
 
 @Component({
@@ -13,6 +12,7 @@ export class AppListComponent implements OnInit {
   apps: string[] = ['facebook', 'snapchat', 'instagram', 'tinder', 'bumble'];
   characters: any[];
   lastClicked: any;
+  opacity = 0.75;
 
   currentCharacter:any;
 
@@ -25,17 +25,18 @@ export class AppListComponent implements OnInit {
   }
 
   activate(e, c) {
-    if (this.lastClicked && this.lastClicked != e.target) {
-      $(this.lastClicked).removeClass('active');
-      $(e.target).addClass('active');
-      this.lastClicked = e.target;
-    }
-    else {
-      $(e.target).addClass('active');
-      this.lastClicked = e.target;
-    }
+    this.opacity = 0.5;
+    // if (this.lastClicked && this.lastClicked != e.target) {
+    //   $(this.lastClicked).removeClass('active');
+    //   $(e.target).addClass('active');
+    //   this.lastClicked = e.target;
+    // }
+    // else {
+    //   $(e.target).addClass('active');
+    //   this.lastClicked = e.target;
+    // }
 
-    // update app-viewer component somehow?!?!?!?
+    // update app-viewer component
     this.currentCharacter = c;
     this.swapiService.setCurrentCharacter(this.currentCharacter);
   }

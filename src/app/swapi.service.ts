@@ -9,13 +9,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SwapiService {
 
-  private messageSource = new BehaviorSubject<string>("default msg");
-  currentMessage = this.messageSource.asObservable();
-
   private selectedCharacter = new BehaviorSubject<any>(null);
   currentCharacter = this.selectedCharacter.asObservable();
 
-  private homeworld = new BehaviorSubject<any>({});
+  private homeworld = new BehaviorSubject<any>(null);
   currentHomeworld = this.homeworld.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -31,11 +28,7 @@ export class SwapiService {
     this.selectedCharacter.next(character);
     this.getHomeworld(character.homeworld).subscribe(world => this.homeworld.next(world));
   }
-
-  changeMessage(message: string) {
-    this.messageSource.next(message);
-  }
-
+  
   getHomeworld(uri: string) : Observable<any> {
     return this.http.get(uri).map(data => {
       var h = data["name"];

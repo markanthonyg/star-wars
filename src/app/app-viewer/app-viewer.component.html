@@ -1,9 +1,24 @@
-<div  *ngIf="selectedCharacter" style="padding: 10px 10px 10px 10px" class="jumbotron jumbotron-fluid">
+<div [ngStyle]="{opacity: opacity}" *ngIf="selectedCharacter" style="padding: 10px 10px 10px 10px" class="jumbotron jumbotron-fluid">
   <h1 class="display-3">{{selectedCharacter.name}}</h1>
   <!-- *ngIf="homeworld && homeworld.length" -->
-  <p class="lead">of {{homeworld}}</p>
+  <p *ngIf="homeworld" class="lead">of {{homeworld}}</p>
   <hr class="my-4">
-  <p>{{selectedCharacter.birth_year}}</p>
+  <div class="row">
+  <div class="col-md-3"><small>Born</small> {{selectedCharacter.birth_year}}</div>
+  <div class="col-md-3"><small>Height</small> {{selectedCharacter.height}}</div>
+</div>
+<div class="row">
+  <div class="col-md-3"><small>Mass</small> {{selectedCharacter.mass}} kg</div>
+  <div class="col-md-3"><small>Hair color</small> {{selectedCharacter.hair_color}}</div>
+</div>
+<div class="row">
+  <div class="col-md-3"><small>Skin color</small> {{selectedCharacter.skin_color}}</div>
+  <div class="col-md-3"><small>Eye color</small> {{selectedCharacter.eye_color}}</div>
+</div>
+<div class="row">
+  <div class="col-md-3"><small>Gender</small> {{selectedCharacter.gender}}</div>
+</div>
+<hr class="my-4">
   <p class="lead">
     <a class="btn btn-info btn-lg" href="#" role="button">Add</a>
   </p>
