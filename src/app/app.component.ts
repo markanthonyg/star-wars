@@ -10,12 +10,13 @@ declare const $:any;
 export class AppComponent {
 
   currentWorld: string = "";
-  worlds = {
-    Tatooine: "../assets/images/tatooine.jpg",
-    Naboo: "../assets/images/naboo.jpg",
-    Alderaan: "../assets/images/alderaan.png",
-    Stewjon: "../assets/images/stewjon.jpg"
-  };
+  // worlds = {
+  //   "Tatooine": "../assets/images/tatooine.jpg",
+  //   "Naboo": "../assets/images/naboo.jpg",
+  //   "Alderaan": "../assets/images/alderaan.png",
+  //   "Stewjon": "../assets/images/stewjon.jpg",
+  //   "Bespin": "../assets/images/bespin.png"
+  // };
 
   backLoads = true;
 
@@ -27,13 +28,16 @@ export class AppComponent {
         this.currentWorld = world;
         this.updateWorldBg(this.currentWorld);
       }
-     });
+    });
+
      $('#back').toggleClass('transparent');
   }
 
   updateWorldBg(world) {
+    let path = '../assets/images/' + world.toLowerCase() + '.png';
+    console.log(path);
     if (this.backLoads) {
-      $('#back').attr('src', this.worlds[world]);
+      $('#back').attr('src', path);
       $('#back').on('load', function() {
         $('#front').toggleClass('transparent');
         $('#back').toggleClass('transparent');
@@ -41,7 +45,7 @@ export class AppComponent {
       });
       this.backLoads = false;
     } else {
-      $('#front').attr('src', this.worlds[world]);
+      $('#front').attr('src', path);
       $('#front').on('load', function() {
         $('#back').toggleClass('transparent');
         $('#front').toggleClass('transparent');

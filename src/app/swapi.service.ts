@@ -17,10 +17,9 @@ export class SwapiService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters() : Observable<any> {
-    return this.http.get('https://swapi.co/api/people/').map(data => {
-      var chars = data['results'];
-      return chars;
+  getCharacters(url) : Observable<any> {
+    return this.http.get(url).map(data => {
+      return data;
     });
   }
 
@@ -28,7 +27,7 @@ export class SwapiService {
     this.selectedCharacter.next(character);
     this.getHomeworld(character.homeworld).subscribe(world => this.homeworld.next(world));
   }
-  
+
   getHomeworld(uri: string) : Observable<any> {
     return this.http.get(uri).map(data => {
       var h = data["name"];
